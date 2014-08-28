@@ -29,6 +29,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
+    backbars (0.0.5)
+      handlebars_assets
     bcrypt (3.1.7)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
@@ -74,6 +76,11 @@ GEM
     faker (1.4.3)
       i18n (~> 0.5)
     ffi (1.9.3)
+    handlebars_assets (0.17.1)
+      execjs (>= 1.2.9)
+      multi_json
+      sprockets (>= 2.0.3)
+      tilt
     hike (1.2.3)
     hub (1.12.2)
     i18n (0.6.11)
@@ -196,6 +203,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  backbars
   better_errors
   binding_of_caller
   bootstrap-sass
