@@ -23,3 +23,15 @@
 //= require_tree ./templates
 //= require bootstrap-sprockets
 //= require_tree .
+
+App = {
+  Models: {},
+  Views: {},
+  Collections: {},
+  Routers: {}
+};
+
+$(document).ready(function(){
+  App.router = new App.Router();
+  Backbone.history.start();
+});
