@@ -8,16 +8,11 @@ class User < ActiveRecord::Base
     self.role ||= :user
   end
 
-  validate do |user|
-    puts '====================='
-    puts 'USER OBJECT' + user.inspect
-    puts '====================='
-    puts user.birthday
-    puts '====================='
-    if user.birthday > 10.years.ago
-      errors.add(:birthday, "must be at least 10 years old")
-    end
-  end
+  # validate do |user|
+  #   # if user.birthday > 10.years.ago
+  #   #   errors.add(:birthday, "must be at least 10 years old")
+  #   # end
+  # end
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
