@@ -9,6 +9,11 @@ class User < ActiveRecord::Base
   end
 
   validate do |user|
+    puts '====================='
+    puts 'USER OBJECT' + user.inspect
+    puts '====================='
+    puts user.birthday
+    puts '====================='
     if user.birthday > 10.years.ago
       errors.add(:birthday, "must be at least 10 years old")
     end
