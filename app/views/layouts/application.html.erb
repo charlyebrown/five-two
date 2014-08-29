@@ -7,6 +7,9 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <script type ='javascript'>
+      App.Globals.userId = <%= current_user.id %>
+    </script>
   </head>
   <body>
     <header>
@@ -14,6 +17,7 @@
     </header>
     <main role="main">
        <%= render 'layouts/messages' %>
+       <div id="user-display"></div>
        <%= yield %>
     </main>
   </body>

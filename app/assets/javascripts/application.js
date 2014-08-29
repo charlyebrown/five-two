@@ -16,11 +16,12 @@
 //= require underscore
 //= require backbone
 //= require handlebars
+//= require_self
+//= require_tree ./templates
 //= require_tree ./backbone/routers
 //= require_tree ./backbone/models
 //= require_tree ./backbone/collections
 //= require_tree ./backbone/views
-//= require_tree ./templates
 //= require bootstrap-sprockets
 //= require_tree .
 
@@ -28,10 +29,13 @@ App = {
   Models: {},
   Views: {},
   Collections: {},
-  Routers: {}
+  Routers: {},
+  Globals: {}
 };
 
-$(document).ready(function(){
+$(function(){
   App.router = new App.Router();
+  App.eventCollection = new App.EventsCollection();
+  App.userView = new App.UserView({collection: App.eventCollection});
   Backbone.history.start();
 });
