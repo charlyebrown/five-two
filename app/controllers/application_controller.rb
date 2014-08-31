@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :birthday, :years, :months
+    devise_parameter_sanitizer.for(:sign_up) << [:birthday, :years, :months]
   end
 
   private
