@@ -15,6 +15,7 @@ App.Router = Backbone.Router.extend({
     App.userView = new App.UserView({model: currentUser, collection: App.eventCollection});
     App.eventCollection.fetch({reset: true});
     App.formView = new App.EventsFormView({collection: App.eventCollection});
+    $('.event-form').hide();
   },
 
   index: function(){
