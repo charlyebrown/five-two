@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user_id = current_user.id
+    @event.weeks = (((@event.end_date - @event.start_date).to_i)/7)
     render json: @event.to_json, status: 200 if @event.save
   end
   def update
