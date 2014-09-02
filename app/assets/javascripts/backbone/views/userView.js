@@ -5,11 +5,15 @@ App.UserView = Backbone.View.extend({
     console.log('User View Generated');
     this.listenTo(this.collection, 'add', this.addOne);
     this.listenTo(this.collection, 'reset', this.addAll);
+    this.listenTo(this.model, 'change', this.render)
     this.template = HandlebarsTemplates['users/user'];
+    console.log(this.model);
+    this.render();
   },
 
   render: function(){
     this.$el.html(this.template(this.model.toJSON()));
+    this.addAll();
   },
 
   addAll: function(){
@@ -20,18 +24,19 @@ App.UserView = Backbone.View.extend({
 
   addOne: function(event){
     var eventView = new App.EventView({model: event});
-    eventView.$el.insertAfter(this.$('span.add'));
+    eventView.$el.insertAfter(this.$('span.add_event'));
   },
 
-
   events: {
-    'click span.add': 'showForm'
+    'click span.add_event': 'showForm'
   },
 
   showForm: function(){
     console.log('trying to add new event')
     App.router.navigate('events/new')
-    new App.EventsFormView();
+    var formView = new App.EventsFormView({collection: App.eventCollection});
+    formView.$el.insertAfter(this.$('span.add_event'))
+    $('span.add_event').hide();
     $('#event-form').fadeIn(500);
   }
 });

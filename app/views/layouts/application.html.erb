@@ -8,9 +8,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <% if current_user %>
-      <script type ='javascript'>
-        App.Globals.userId = <%= current_user.id %>
-      </script>
+      <%= javascript_tag do %>
+      window.userID = "<%=j current_user.id.to_s %>";
+      <% end %>
     <% end %>
   </head>
   <body>

@@ -12,11 +12,12 @@ App.EventsFormView = Backbone.View.extend({
   },
 
   events: {
-    'click span.new-event': 'newEvent',
-    'click span.cancel': 'cancel'
+    'click span.add-event': 'newEvent',
+    'click span.cancel': 'cancel',
   },
 
   newEvent: function(){
+    console.log('adding new event')
     var data= {
       title: this.$("[name='title']").val(),
       location: this.$("[name='location']").val(),
@@ -27,7 +28,13 @@ App.EventsFormView = Backbone.View.extend({
       $('input').val('');
       $('#event-form').hide(100);
       App.router.navigate('')
-    }
-  });
+      }
+    });
+  },
+
+  cancel: function(){
+    App.router.navigate('')
+    $('#event-form').hide();
+    $('span.add_event').show();
   }
 })

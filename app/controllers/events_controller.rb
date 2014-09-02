@@ -8,6 +8,7 @@ class EventsController < ApplicationController
   end
   def create
     @event = Event.new(event_params)
+    @event.user_id = current_user.id
     render json: @event.to_json, status: 200 if @event.save
   end
   def update
