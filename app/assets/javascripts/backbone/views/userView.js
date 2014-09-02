@@ -3,11 +3,10 @@ App.UserView = Backbone.View.extend({
 
   initialize: function(){
     console.log('User View Generated');
-    this.listenTo(this.collection, 'add', this.addOne);
     this.listenTo(this.collection, 'reset', this.addAll);
+    this.listenTo(this.collection, 'add', this.addOne);
     this.listenTo(this.model, 'change', this.render)
     this.template = HandlebarsTemplates['users/user'];
-    console.log(this.model);
     this.render();
   },
 
@@ -32,7 +31,6 @@ App.UserView = Backbone.View.extend({
   },
 
   showForm: function(){
-    console.log('trying to add new event')
     App.router.navigate('events/new')
     var formView = new App.EventsFormView({collection: App.eventCollection});
     formView.$el.insertAfter(this.$('span.add_event'))
