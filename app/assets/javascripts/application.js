@@ -37,3 +37,63 @@ $(function(){
   App.router = new App.Router();
   Backbone.history.start();
 });
+
+function drawBar(userEvents) {
+  var body = $('body')
+  var div = $('<div>').addClass('chart');
+  body.append(div);
+  var data = [];
+  for (var i =0; i< userEvents.length; i++) {
+    data.push(userEvents[i].weeks);
+  }
+  var x = d3.scale.linear()
+    .domain([0, d3.max(data)])
+    .range([0, 420]);
+  d3.select(".chart")
+    .selectAll("div")
+      .data(data)
+    .enter().append("div")
+      .style("width", function(d) { return (x(d) * 2.5) + "px"; })
+      .text(function(d) { return d; });
+}
+
+function drawBubbles(userEvents){
+  var data = [];
+  for (var i =0; i< userEvents.length; i++) {
+    var tempValue = {
+      value: userEvents[i].weeks, x: (((i+1)*20) * 8), y: (i*19.9), r: ((userEvents[i].weeks/5) *.97), title: userEvents[i].title
+    }
+    data.push(tempValue)
+  }
+  var width = 1800;
+  var height = 600;
+  var canvas = d3.select('#user-display').append('svg')
+    .attr('width', width)
+    .attr('height', height)
+    .append('g')
+      .attr('transform', "translate(100, 250)");
+  var pack = d3.layout.pack()
+    .size([width, height - 50 ])
+    .padding(10);
+  var drawNodes = function(data) {
+    console.log(data);
+    var node = canvas.selectAll('.node')
+      .data(data)
+      .enter()
+      .append('g')
+        .attr('class', 'node')
+        .attr('transform', function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+    node.append('circle')
+      .attr('r', function (d) { return d.r; })
+      .attr('fill', 'red')
+      .attr('opacity', 0.25)
+      .attr('stroke', 'ADADAD')
+      .attr('stroke-width', '2');
+    node.append("text")
+    .attr("dx", 12)
+    .attr("dy", ".35em")
+    .text(function(d) { return d.title; });
+  };
+  drawNodes(data);
+
+}
