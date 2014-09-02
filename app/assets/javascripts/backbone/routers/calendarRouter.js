@@ -20,5 +20,14 @@ App.Router = Backbone.Router.extend({
 
   index: function(){
     console.log('fired index!');
+  },
+
+  newEvent: function(){
+
+  },
+
+  editEvent: function() {
+    
   }
+
 })
