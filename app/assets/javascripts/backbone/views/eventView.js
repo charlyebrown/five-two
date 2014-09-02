@@ -1,11 +1,11 @@
 App.EventView = Backbone.View.extend({
-    className: 'event',
+  className: 'event',
 
   initialize: function(){
-    console.log('Created an Event View')
+    console.log('Created an Event View');
+    this.template = HandlebarsTemplates['events/event'];
+    this.render();
   },
-
-  template: HandlebarsTemplates['/events/event'],
 
   render: function(){
     this.$el.html(this.template(this.model.toJSON()));

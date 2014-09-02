@@ -4,5 +4,4 @@ App.UserModel = Backbone.Model.extend({
     console.log('New User Model Created');
   }
 
-  //make a new collection with the events array
 })

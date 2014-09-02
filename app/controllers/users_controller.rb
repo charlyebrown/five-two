@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render json: {user: @user, events: [{},{},{}]}
+    render json: {user: @user, events: @user.events}
   end
 
   def update
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   private
 
   def secure_params
-    params.require(:user).permit(:role, :years, :months, :name)
+    params.require(:user).permit(:role, :birthday, :name)
   end
 
 end

@@ -35,7 +35,5 @@ App = {
 
 $(function(){
   App.router = new App.Router();
-  App.eventCollection = new App.EventsCollection();
-  App.userView = new App.UserView({collection: App.eventCollection});
   Backbone.history.start();
 });

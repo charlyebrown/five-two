@@ -1,16 +1,16 @@
-<div class='event-form-div'>
+<div class='event-form'>
 {{#if this}}
   <input type="text" name="title" value="{{title}}">
   <input type="text" name="location" value="{{location}}">
-  <date select name="start-date" value="{{start-date}}">
-  <date select name="end-date" value="{{end-date}}">
+  <input type="text" name="start-date" value="{{start-date}}">
+  <input type="text" name="end-date" value="{{end-date}}">
   <span class="edit-event">Edit Your Event</span>
 {{else}}
   <input type="text" name="title" value="{{title}}">
   <input type="text" name="location" value="{{location}}">
-  <date select name="start-date" value="{{start-date}}">
-  <date select name="end-date" value="{{end-date}}">
-  <span class="edit-event">Edit Your Event</span>
+  <input type="text" name="start-date" value="{{start-date}}">
+  <input type="text" name="end-date" value="{{end-date}}">
+  <span class="edit-event">Add Your Event</span>
 {{/if}}
   <span class='cancel'>X</span>
 </div>
