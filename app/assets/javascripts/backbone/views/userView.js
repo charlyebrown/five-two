@@ -24,6 +24,8 @@ App.UserView = Backbone.View.extend({
   addOne: function(event){
     var eventView = new App.EventView({model: event});
     eventView.$el.insertAfter(this.$('span.add_event'));
+    $('span.add_event').show();
+    App.router.navigate('');
   },
 
   events: {
