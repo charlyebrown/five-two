@@ -19,9 +19,9 @@
     </header>
     <main role="main">
        <%= render 'layouts/messages' %>
-       <div id="user-display"><span class='add'>Add Event</span></div>
        <% if current_user %>
-       <div id='event-form'></div>
+         <div id="user-display"></div>
+         <div id="event-container"></div>
        <% end %>
        <%= yield %>
     </main>

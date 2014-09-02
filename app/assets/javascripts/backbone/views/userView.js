@@ -34,9 +34,8 @@ App.UserView = Backbone.View.extend({
 
   showForm: function(){
     App.router.navigate('events/new')
-    var formView = new App.EventsFormView({collection: App.eventCollection});
-    formView.$el.insertAfter(this.$('span.add_event'))
+    $('.event-form').show();
+    App.formView.$el.insertAfter(this.$('span.user_info'))
     $('span.add_event').hide();
-    $('#event-form').fadeIn(500);
   }
 });

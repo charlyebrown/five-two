@@ -14,6 +14,7 @@ App.Router = Backbone.Router.extend({
     console.log(currentUser);
     App.userView = new App.UserView({model: currentUser, collection: App.eventCollection});
     App.eventCollection.fetch({reset: true});
+    App.formView = new App.EventsFormView({collection: App.eventCollection});
   },
 
   index: function(){
