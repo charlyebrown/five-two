@@ -38,10 +38,10 @@ $(function(){
   Backbone.history.start();
 });
 
-function drawBar(userEvents) {
-  var body = $('body')
-  var div = $('<div>').addClass('chart');
-  body.append(div);
+function drawBars(userEvents) {
+  var svgDisplay = $('.svg_display')
+  var chart = $('<div>').addClass('chart');
+  svgDisplay.append(chart);
   var data = [];
   for (var i =0; i< userEvents.length; i++) {
     data.push(userEvents[i].weeks);
@@ -67,7 +67,7 @@ function drawBubbles(userEvents){
   }
   var width = 1800;
   var height = 600;
-  var canvas = d3.select('#user-display').append('svg')
+  var canvas = d3.select('.svg_display').append('svg')
     .attr('width', width)
     .attr('height', height)
     .append('g')

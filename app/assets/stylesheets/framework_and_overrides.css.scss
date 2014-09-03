@@ -79,3 +79,34 @@ section {
   @extend .btn-primary;
   @extend .btn-xs;
 }
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+svg {
+  text-align: center;
+  width: 100%;
+  height: 90%;
+  border: solid black 3px;
+  margin-top: 35px;
+}
+
+.add_event {
+  width: 15px;
+  height: 15px;
+  margin: 20px;
+  margin-bottom: 1em;
+  border: 2px solid black;
+  padding: .5em;
+}
+
+#event-container {
+  margin: 20px;
+  margin-bottom: 1em;
+  padding: .5em;
+  text-align: center;
+}

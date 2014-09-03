@@ -9,28 +9,29 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <link href="../assets/stylesheets/small-business.css" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
     <%= csrf_meta_tags %>
-    <% if current_user %>
-      <%= javascript_tag do %>
-      window.userID = "<%=j current_user.id.to_s %>";
-      <% end %>
-    <% end %>
   </head>
   <body>
     <header>
       <%= render 'layouts/navigation' %>
     </header>
+    <% if current_user %>
+      <%= javascript_tag do %>
+        window.userID = "<%=j current_user.id.to_s %>";
+      <% end %>
+    <% end %>
 
         <!-- Page Content -->
     <div class="container">
 
         <!-- Heading Row -->
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 head_row">
                 <img class="img-responsive img-rounded" src="http://flothemes.com/test/blanco/wp-content/uploads/sites/5/2014/01/0007_macleod_raw1462-950x500.jpg" alt="">
             </div>
             <!-- /.col-md-8 -->
-            <div class="col-md-4 intro">
+            <div class="col-md-4 intro head_row">
                 <p>FIVE and TWO allows you to create visualizations of your
                 life in terms of weeks. </p>
 
@@ -49,8 +50,12 @@
     <main role="main">
        <%= render 'layouts/messages' %>
        <% if current_user %>
-         <div id="user-display"></div>
-         <div id="event-container"></div>
+        <div id="user-display">
+          <span class='add_event'>Add an Event</span>
+          <div id="event-container">
+          </div>
+        </div>
+        <div class="svg_display"></div>
        <% end %>
        <%= yield %>
     </main>
