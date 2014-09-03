@@ -116,7 +116,3 @@ function dance(){
   .ease('')
   .each('end', bounce);
 }
-
-var fisheye = d3.fisheye.circular()
-    .radius(200)
-    .distortion(2);
