@@ -27,8 +27,9 @@ App.EventsFormView = Backbone.View.extend({
     this.collection.create(data, {success: function(){
       $('input').val('');
       $('.event-form').hide(100);
+      $('span.add_event').show();
       App.router.navigate('')
-      }
+      }    
     });
   },
 

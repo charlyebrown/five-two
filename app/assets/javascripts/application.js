@@ -62,7 +62,7 @@ function drawBubbles(userEvents){
   var data = [];
   for (var i =0; i< userEvents.length; i++) {
     var tempValue = {
-      value: userEvents[i].weeks, x: (((i+1)*15) * 5), y: (i*Math.random()*5), r: (Math.sqrt(userEvents[i].weeks) * 3.97), title: userEvents[i].title
+      value: userEvents[i].weeks, x: (((i+1)*1.5) * 15), y: (i*Math.random()*5), r: (Math.sqrt(userEvents[i].weeks) * 3.97), title: userEvents[i].title
     }
     data.push(tempValue)
   }
@@ -103,7 +103,7 @@ function bounce(){
   d3.select(this) //selecting the element to be bounced
   .transition()
   // 'transform', function(d) { return "translate(" + d.x + "," + d.y + ")"; }
-  .attr("transform", "translate(" + Math.random() * (Math.random() * 1000) + "," + Math.random() * 40 + ")")
+  .attr("transform", "translate(" + Math.random() * (Math.random() * 900) + "," + Math.random() * 40 + ")")
   .duration(1000)
   .ease('bounce')
 }
