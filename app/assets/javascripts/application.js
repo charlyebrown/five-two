@@ -24,6 +24,7 @@
 //= require_tree ./backbone/views
 //= require bootstrap-sprockets
 //= require_tree .
+//= require_tree ./../stylesheets
 
 App = {
   Models: {},
@@ -61,12 +62,12 @@ function drawBubbles(userEvents){
   var data = [];
   for (var i =0; i< userEvents.length; i++) {
     var tempValue = {
-      value: userEvents[i].weeks, x: (((i+1)*20) * 8), y: (i*19.9), r: ((userEvents[i].weeks/5) *.97), title: userEvents[i].title
+      value: userEvents[i].weeks, x: (((i+1)*15) * 5), y: (i*Math.random()*5), r: (Math.sqrt(userEvents[i].weeks) * 3.97), title: userEvents[i].title
     }
     data.push(tempValue)
   }
-  var width = 1800;
-  var height = 600;
+  var width = 900;
+  var height = 500;
   var canvas = d3.select('.svg_display').append('svg')
     .attr('width', width)
     .attr('height', height)
@@ -82,7 +83,8 @@ function drawBubbles(userEvents){
       .enter()
       .append('g')
         .attr('class', 'node')
-        .attr('transform', function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+        .attr('transform', function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+        .on('mouseover', bounce);
     node.append('circle')
       .attr('r', function (d) { return d.r; })
       .attr('fill', 'red')
@@ -95,5 +97,26 @@ function drawBubbles(userEvents){
     .text(function(d) { return d.title; });
   };
   drawNodes(data);
-
 }
+
+function bounce(){
+  d3.select(this) //selecting the element to be bounced
+  .transition()
+  // 'transform', function(d) { return "translate(" + d.x + "," + d.y + ")"; }
+  .attr("transform", "translate(" + Math.random() * (Math.random() * 1000) + "," + Math.random() * 40 + ")")
+  .duration(1000)
+  .ease('bounce')
+}
+
+function dance(){
+  d3.select(this) //selecting the element to be bounced
+  .transition()
+  .attr("r", Math.random() * 100)
+  .duration(1000)
+  .ease('')
+  .each('end', bounce);
+}
+
+var fisheye = d3.fisheye.circular()
+    .radius(200)
+    .distortion(2);

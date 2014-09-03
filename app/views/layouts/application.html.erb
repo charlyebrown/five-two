@@ -7,9 +7,10 @@
     <title><%= content_for?(:title) ? yield(:title) : "Five Two" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Five Two" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <link href="../assets/stylesheets/small-business.css" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.js"></script>
     <%= csrf_meta_tags %>
   </head>
   <body>
