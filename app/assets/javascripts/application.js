@@ -45,8 +45,9 @@ function drawBars(userEvents) {
   svgDisplay.append(chart);
   var data = [];
   for (var i =0; i< userEvents.length; i++) {
-    data.push(userEvents[i].weeks);
+    data.push({title: userEvents[i].title, weeks: userEvents[i].weeks});
   }
+  console.log(data);
   var x = d3.scale.linear()
     .domain([0, d3.max(data)])
     .range([0, 420]);
@@ -54,8 +55,40 @@ function drawBars(userEvents) {
     .selectAll("div")
       .data(data)
     .enter().append("div")
-      .style("width", function(d) { return (x(d) * 2.5) + "px"; })
-      .text(function(d) { return d; });
+      .style("width", function(d) { return (d.weeks * 1.2) + "px"; })
+      .transition().delay(function (d,i){ return i * 300;}).duration(300)
+      .text(function(d) { return d.title; });
+}
+
+function drawBarsVertical(userEvents) {
+  var dataWeeks = [];
+  var data = []
+  for (var i =0; i< userEvents.length; i++) {
+    data.push({title: userEvents[i].title, weeks: userEvents[i].weeks});
+    dataWeeks.push(userEvents[i].weeks);
+  }
+  var w = 800;
+  var h = 1200;
+  console.log(data);
+  var x = d3.scale.linear()
+    .domain([0, 1])
+    .range([0, 800]);
+  var y = d3.scale.linear()
+    .domain([0, 1000])
+    .rangeRound([0, 80]);
+  var chart = d3.select('.svg_display').append('svg')
+    .attr('class', "chart")
+    .attr('width', 800)
+    .attr("height", dataWeeks.max);
+  chart.selectAll('rect')
+      .data(data)
+    .enter().append("rect")
+      .attr("x", function(d, i) {return x(i) - .5; })
+      .attr("y", function(d) { return h - y(d.weeks) -.5})
+      .attr("width", 20)
+      .transition().delay(function (d,i){ return i * 300;}).duration(300)
+      .attr('height', function(d) { return y(d.weeks)})
+      .text(function(d) { return d.title; });
 }
 
 function drawBubbles(userEvents){

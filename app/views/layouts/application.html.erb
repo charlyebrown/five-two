@@ -52,7 +52,10 @@
        <%= render 'layouts/messages' %>
        <% if current_user %>
         <div id="user-display">
-          <span class='add_event'>Add an Event</span>
+          <span class='add_event' id='add_event'>Add an Event</span>
+          <span class='add_event' id="bubbles">Show Bubbles</span>
+          <span class='add_event' id="bars">Show Bars</span>
+
           <div id="event-container">
           </div>
         </div>

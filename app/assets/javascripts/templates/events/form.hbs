@@ -1,15 +1,23 @@
 <div class='event-form'>
 {{#if this}}
+  <label>Title</label>
   <input type="text" name="title" value="{{title}}">
+  <label>Location</label>
   <input type="text" name="location" value="{{location}}">
+  <label>Start Date</label>
   <input type="text" name="start_date" value="{{start_date}}">
-  <input type="text" name="end_date" value="{{end_date}}">
+  <label>End Date</label>
+  <input type="text" name="end_date" value="{{end_date}}"><br>
   <span class="edit-event">Edit Your Event</span>
 {{else}}
+  <label>Title</label>
   <input type="text" name="title">
+  <label>Location</label>
   <input type="text" name="location">
+  <label>Start Date</label>
   <input type="text" name="start_date">
-  <input type="text" name="end_date">
+  <label>End Date</label>
+  <input type="text" name="end_date"><br>
   <span class="add-event">Add Your Event</span>
 {{/if}}
   <span class='cancel'>X</span>

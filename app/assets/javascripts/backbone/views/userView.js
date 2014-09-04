@@ -38,8 +38,29 @@ App.UserView = Backbone.View.extend({
   // },
 
   events: {
-    'click span.add_event': 'showForm'
+    'click span#add_event': 'showForm',
+    'click span#bubbles': 'showBubbles',
+    'click span#bars': 'showBars',
   },
+
+  showBubbles: function(){
+    console.log('show me the bubbles')
+    var models = this.collection.map(function(model) {
+      return model.toJSON();
+    });
+    $('.svg_display').empty();
+    drawBubbles(models);
+  },
+
+  showBars: function(){
+    console.log('show me the bars')
+    var models = this.collection.map(function(model) {
+      return model.toJSON();
+    });
+    $('.svg_display').empty();
+    drawBars(models);
+  },
+
 
   showForm: function(){
     App.router.navigate('events/new')
