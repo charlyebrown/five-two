@@ -21,7 +21,6 @@ App.UserView = Backbone.View.extend({
       return model.toJSON();
     });
     console.log('rendered models');
-    drawBubbles(models);
   },
 
   // addAll: function(){
