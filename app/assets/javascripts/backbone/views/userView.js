@@ -62,6 +62,7 @@ App.UserView = Backbone.View.extend({
 
 
   showForm: function(){
+    $('.svg_display').empty();
     App.router.navigate('events/new')
     $('.event-form').show();
     App.formView.$el.insertAfter(this.$('span.user_info'))

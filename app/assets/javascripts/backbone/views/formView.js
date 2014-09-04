@@ -29,7 +29,7 @@ App.EventsFormView = Backbone.View.extend({
       $('.event-form').hide(100);
       $('span.add_event').show();
       App.router.navigate('')
-      }    
+      }
     });
   },
 
